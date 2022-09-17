@@ -1,4 +1,6 @@
 import { AppBar } from '@mui/material';
+import { useState } from 'react';
+import Menu from './Menu';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -8,13 +10,21 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 const NavBar = () =>{
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const openOrCloseSideMenu = (param) =>{
+    param ? setOpenMenu(false) : setOpenMenu(true);
+  }
   return(
     <>
       <AppBar>
         <Stack spacing={2} direction="row" p={2} >
           <IconButton>
-            <MenuIcon />
+            <MenuIcon 
+              onClick={()=>openOrCloseSideMenu(openMenu)}
+            />
           </IconButton>
+          {openMenu && <Menu />}
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             placeholder="Buscar Pokemon"
