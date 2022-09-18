@@ -1,13 +1,21 @@
+import Divider from '@mui/material/Divider';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 
-const Menu = () =>{
+
+const Menu = ({ menuItems }) =>{
+  
   return(
     <>
       <MenuList>
-        <MenuItem>joseifna</MenuItem>
-        <MenuItem>joseifna</MenuItem>
-        <MenuItem>joseifna</MenuItem>
+        {menuItems.map((item, index) =>(
+          <>
+            <MenuItem key={index}>
+              {item}
+            </MenuItem>
+            <Divider />
+          </>
+        ))}
       </MenuList>
 
     </>

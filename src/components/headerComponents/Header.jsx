@@ -5,17 +5,28 @@ import Menu from './Menu';
 import NavBar from "./NavBar";
 
 const Header = () =>{
+  const [menuItems, setMenuItems] = useState([
+    "Berries",
+    "Contests",
+    "Encounters",
+    "Evolution",
+    "Games",
+    "Items",
+    "Locations",
+    "Machines",
+    "Moves",
+    "Pokémon",
+  ]);
   const [anchor, setAnchor] = useState("left");
   const [state, setState] = useState({
     left: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    console.log(anchor)
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (event.type === 'keydown' && 
+       (event.key === 'Tab' ||  event.key === 'Shift')) {
       return;
     }
-    console.log(anchor)
     setState({ ...state, [anchor]: open });
   };
 
@@ -35,7 +46,7 @@ const Header = () =>{
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
         >
-          <Menu /> 
+          <Menu menuItems={menuItems}/> 
         </Box>
       </Drawer>
     </>
